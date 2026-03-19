@@ -219,6 +219,8 @@ void 	User_handle(uint8 dat)
 		over_time=0;
 		PrintCom("<G>你好，主人");
 		LED = 0;
+		
+		UARTSendByte(0x00);
 	}
 	else if(ENABLE == G0_flag)
 	{
@@ -230,31 +232,37 @@ void 	User_handle(uint8 dat)
 			over_time=0;
 			SRD1 = 1;
 			PrintCom("<G>灯已打开");
+			UARTSendByte(0x01);
 			break;
 		case CODE_2:	 /*命令“关灯”*/
 			over_time=0;
 			SRD1 = 0;
 			PrintCom("<G>灯已关闭");
+			UARTSendByte(0x02);
 			break;
 		case CODE_3:		/*命令“打开电视”*/
 			over_time=0;
 			SRD2 = 1;
 			PrintCom("<G>电视机已打开");
+			UARTSendByte(0x04);
 			break;
 		case CODE_4:		/*命令“关闭电视”*/
 			over_time=0;
 			SRD2 = 0;
 			PrintCom("<G>电视机已关闭");
+			UARTSendByte(0x14);
 			break;
 		case CODE_5:		/*命令“打开冰箱”*/
 			over_time=0;
 			SRD3 = 1;
 			PrintCom("<G>冰箱已打开");
+			UARTSendByte(0x15);
 			break;
 		case CODE_6:		/*命令“关闭冰箱”*/
 			over_time=0;
 			SRD3 = 0;
 			PrintCom("<G>冰箱已关闭");
+			UARTSendByte(0x16);
 			break;
 		case CODE_7:		/*命令“打开空调”*/
 			over_time=0;
